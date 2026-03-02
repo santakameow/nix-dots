@@ -13,7 +13,7 @@
   };
 	
   outputs = { self, nixpkgs, home-manager, nixos-wsl, ... }@inputs: {
-    nixosConfigurations.remus = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.azari = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs; };
       modules = [
