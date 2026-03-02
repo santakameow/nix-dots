@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     btop
+    lazygit
   ];
   programs.bash.enable = true;
   programs.home-manager.enable = true;
