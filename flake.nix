@@ -44,7 +44,6 @@
         disko.nixosModules.disko
 	./hosts/kairu/configuration.nix
         nixos-facter-modules.nixosModules.facter
-	{ hardware.facter.reportPath = ./hosts/kairu/facter.json }
 	{
           config.facter.reportPath = 
 	    if builtins.pathExists ./hosts/kairu/facter.json then
