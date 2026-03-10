@@ -15,7 +15,7 @@
     };
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
   };
-	
+
   outputs = {
     self,
     nixpkgs,

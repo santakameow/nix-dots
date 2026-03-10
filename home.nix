@@ -11,6 +11,7 @@
     btop
     lazygit
     go
+    opencode
   ];
   # programs 
   programs.bash.enable = true;
