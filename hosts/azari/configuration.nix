@@ -16,6 +16,11 @@
   wsl.enable = true;
   wsl.defaultUser = "nixos";
 
+  programs.zsh.enable = true;
+  users.users.nixos = {
+    shell = pkgs.zsh;
+  };
+
   environment.systemPackages = [
     pkgs.fastfetch
     pkgs.git
