@@ -1,5 +1,5 @@
 # good names for next hosts
- - Azari
- - Kairu
+ - Azari // picked
+ - Kairu // picked
  - Elige
  - Zevron
