@@ -13,7 +13,7 @@
     go
     opencode
   ];
-  # programs 
+  # programs
   programs.bash.enable = true;
   programs.zsh = {
     enable = true;
@@ -30,7 +30,7 @@
     matchBlocks = {
       kairu = {
         hostname = "93.113.25.151";
-	user = "root";
+	      user = "root";
       };
     };
   };

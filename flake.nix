@@ -2,6 +2,7 @@
   description = "flake for sakanai devices";
 
   inputs = {
+    # basic urls
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager = {
@@ -23,13 +24,14 @@
     nixos-wsl,
     disko,
     nixos-facter-modules,
-    ... 
+    ...
   }@inputs: {
+    # azari -- main machine, currently just wsl
     nixosConfigurations.azari = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs; };
       modules = [
-	nixos-wsl.nixosModules.default
+	      nixos-wsl.nixosModules.default
         ./hosts/azari/configuration.nix
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
@@ -38,19 +40,19 @@
         }
       ];
     };
+    # kairu -- server
     nixosConfigurations.kairu = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./hosts/kairu/configuration.nix
         disko.nixosModules.disko
-	./hosts/kairu/configuration.nix
-        nixos-facter-modules.nixosModules.facter
-	{
-          config.facter.reportPath = 
-	    if builtins.pathExists ./hosts/kairu/facter.json then
-	      ./hosts/kairu/facter.json
-	    else
-	      throw "probably you run `nixos-anywere` with `--generate-hardware-config nixos-facter ./hosts/kairu/facter.json`?";
-	}
+        nixos-facter-modules.nixosModules.facter {
+          config.facter.reportPath =
+	        if builtins.pathExists ./hosts/kairu/facter.json then
+	          ./hosts/kairu/facter.json
+	        else
+	          throw "probably you run `nixos-anywere` with `--generate-hardware-config nixos-facter ./hosts/kairu/facter.json`?";
+	      }
       ];
     };
   };
